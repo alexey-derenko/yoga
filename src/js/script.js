@@ -10,9 +10,6 @@ import modal from './parts/modal';
 
 window.addEventListener('DOMContentLoaded', () => {
     "use strict";
-    
-
-
     calc();
     form();
     slider();

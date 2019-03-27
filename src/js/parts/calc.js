@@ -7,9 +7,12 @@ function calc() {
         daysSum = 0,
         total = 0;
 
-        totalValue.innerHTML = 0;
+		totalValue.innerHTML = 0;
+	
+    
 
     persons.addEventListener('change', function() {
+        place.disabled = false;
         persons.value = persons.value.replace(/[^0-9]+/g, '');
         personsSum = +this.value;
         total = (daysSum + personsSum)*4000;
@@ -23,9 +26,10 @@ function calc() {
     });
 
     restDays.addEventListener('change', function() {
+        place.disabled = false;
         restDays.value = restDays.value.replace(/[^0-9]+/g, '');
         daysSum = +this.value;
-        total = (daysSum + personsSum)*4000;
+        total = (daysSum * personsSum)*10;
     
         if (persons.value == '' || restDays.value == '' || persons.value[0] == '0' || restDays.value[0] == '0')  {
             totalValue.innerHTML = 0;
@@ -45,6 +49,20 @@ function calc() {
             totalValue.innerHTML = a * this.options[this.selectedIndex].value;
         }
     });
+
+    function changeBase() {
+        if (restDays.value == '' || persons.value == ''|| persons.value[0] == '0' || restDays.value[0] == '0') {
+            totalValue.innerHTML = 0;
+            place.disabled = true;
+        } else { 
+            place.disabled = false;
+        }
+    }
+
+    place.addEventListener('click', function() {
+        changeBase()
+    });
+
 }
 
 export default calc;
