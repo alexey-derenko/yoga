@@ -1557,7 +1557,7 @@ function calc() {
     place.disabled = false;
     persons.value = persons.value.replace(/[^0-9]+/g, '');
     personsSum = +this.value;
-    total = (daysSum + personsSum) * 4000;
+    total = daysSum * personsSum * 10;
 
     if (persons.value == '' || restDays.value == '' || persons.value[0] == '0' || restDays.value[0] == '0') {
       totalValue.innerHTML = 0;
